@@ -374,3 +374,8 @@ const bills = [
 ];
 
 // Start coding here
+
+function totalBill (arrayobject) {
+  return arrayobject.reduce(function (accum,object) { return accum + object.total },0)
+};
+console.log(`Total bill transaction is ${totalBill(bills)}`);

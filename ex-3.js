@@ -374,4 +374,15 @@ const bills = [
 ];
 
 // Start coding here
-const billMembers;
+function listMember (arrayobject) {
+  let result = [];
+  for (let object of arrayobject) {
+    if (object.member !== null) {
+      result.push(object.member.name);
+    };
+  };
+  return result;
+};
+
+const billMembers = listMember(bills);
+console.log(billMembers);

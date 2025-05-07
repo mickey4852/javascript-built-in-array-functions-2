@@ -1,3 +1,5 @@
+//const { Result } = require("pg");
+
 const bills = [
   {
     id: "1",
@@ -374,4 +376,27 @@ const bills = [
 ];
 
 // Start coding here
-const totalMembers;
+function listMember (arrayobject) {
+  let result = [];
+  for (let object of arrayobject) {
+    if (object.member !== null) {
+      result.push(object.member.name);
+    };
+  };
+  return result;
+};
+
+function countmember (listMemberarray) {
+    let nameCheck = listMember(listMemberarray);
+  //console.log(nameCheck);
+  let clearNameList = [];
+  for (let member of nameCheck) {
+    if (!clearNameList.includes(member)) {
+      clearNameList.push(member);
+    };
+  }
+  return clearNameList.length;
+}
+
+const totalMembers = countmember(bills);
+console.log(`Unique Members Count: ${totalMembers}`);

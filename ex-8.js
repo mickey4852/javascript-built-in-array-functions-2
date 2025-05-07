@@ -374,5 +374,29 @@ const bills = [
 ];
 
 // Start coding here
+function provinceCleanList (arrayObject) {
+    let allProvinceList = arrayObject.map(function (object) { return object.location;});
+    let clearList = [];
+    for (let province of allProvinceList) {
+        if (!clearList.includes(province)) {
+            clearList.push(province);
+        };
+    };
+    return clearList;
+}
 
-const totalPaidByLocation;
+function sumAndPack (arrayObject) {
+    let provinceList = provinceCleanList(arrayObject);
+    let result = {};
+    for (let province of provinceList) {
+        let arrayFilter = arrayObject.filter( object => object.location === province);
+        let sum = 0;
+        for ( let num of arrayFilter) {
+            sum = num.total + sum;
+        };
+        result[province] = sum;
+    };
+    return result;
+};
+const totalPaidByLocation = sumAndPack(bills);
+console.log(totalPaidByLocation);
